@@ -1,0 +1,26 @@
+<div class="container-fluid">`
+  <ol class="breadcrumb">
+    <li><a routerLink="/">CarFLOw</a></li>
+    <li class="active">Nazwa oddziału: Kontakt</li>
+  </ol>
+  <div *ngIf="data; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div style="text-align: center;">
+      <img src="{{data?.imgUrl}}" alt="{{data?.imgAlt}}"><br><br>
+      {{data?.addressFirstLine}}<br>
+      {{data?.addressSecondLine}}<br>
+      {{data?.addressThirdLine}}<br>
+      {{data?.addressFourthLine}}<br>
+      {{data?.addressFifthLine}}<br>
+      <a href="{{data?.mapUrl}}" target="_blank">Zobacz na mapie</a><br><br>
+      Tel.: <a href="tel:{{data?.phoneNumberUrl}}">{{data?.phoneNumberLabel}}</a><br>
+      {{data?.phoneInfo}}<br><br>
+      E-mail: <a href="mailto:{{data?.email}}">{{data?.email}}</a><br><br>
+    </div>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Brak danych</div>
+  </ng-template>
+
+</div>

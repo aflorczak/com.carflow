@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'com.carflow';
+
+  constructor(private router: Router) {
+  }
+
+  getLocationContactPage(event: { preventDefault: () => void; }, url: string) {
+    event.preventDefault();
+
+    this.router.navigateByUrl('/', {skipLocationChange: true})
+      .then(() => this.router.navigate([url]));
+  }
 }

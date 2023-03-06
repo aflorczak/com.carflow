@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <ol class="breadcrumb">
+    <li><a routerLink="/">CarFLOw</a></li>
+    <li class="active">Blog</li>
+  </ol>
+
+  <div *ngIf="posts.length > 0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div class="row">
+      <div  *ngFor="let post of posts">
+        <div class="col-sm-6 col-md-4">
+          <a routerLink="/blog/{{post.slug}}">
+            <div class="thumbnail">
+              <div class="caption">
+                <h3>{{post.title}}</h3>
+                <p style="font-size: 80%; color: gray;">Autor: {{post.author}}</p>
+                <p>{{post.introduction}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #elseBlock>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Brak wpisów</div>
+  </ng-template>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><a routerLink="/">CarFLOw</a></li>
+    <li class="active">Kontakt</li>
+  </ol>
+  <div *ngIf="data; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <div style="text-align: center;">
+      <img src="{{data?.officeImgUrl}}" alt="{{data?.officeImgAlt}}"><br><br>
+      {{data?.addressFirstLine}}<br>
+      {{data?.addressSecondLine}}<br>
+      {{data?.addressThirdLine}}<br>
+      {{data?.addressFourthLine}}<br>
+      <a href="{{data?.mapUrl}}" target="_blank">Zobacz na mapie</a><br><br>
+      Tel.: <a href="tel:{{data?.phoneNumberUrl}}">{{data?.phoneNumberLabel}}</a><br>
+      {{data?.phoneInfo}}<br><br>
+      NIP: {{data?.nip}}<br>
+      REGON: {{data?.regon}}<br>
+      KRS: {{data?.krs}}<br>
+    </div>
+    <div class="row" style="margin-top: 50px; margin-bottom: 50px; text-align: center;">
+      <div *ngIf="data?.complaintsEmail">
+        <div class="col-xs-4">
+          Reklamacje<hr>
+          <a href="mailto:{{data?.complaintsEmail}}">{{data?.complaintsEmail}}</a>
+        </div>
+      </div>
+      <div *ngIf="data?.secretariatEmail">
+        <div class="col-xs-4">
+          Sekretariat<hr>
+          <a href="mailto:{{data?.secretariatEmail}}">{{data?.secretariatEmail}}</a>
+        </div>
+      </div>
+      <div *ngIf="data?.invoicesEmail">
+        <div class="col-xs-4">
+          Faktury<hr>
+          <a href="mailto:{{data?.invoicesEmail}}">{{data?.invoicesEmail}}</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Brak danych</div>
+  </ng-template>
+
+</div>

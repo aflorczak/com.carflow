@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li><a routerLink="/">CarFLOw</a></li>
+    <li><a routerLink="/blog">Blog</a></li>
+    <li class="active">Tytuł wpisu</li>
+  </ol>
+
+  <div *ngIf="post; then thenBlock else elseBlock"></div>
+
+  <ng-template #thenBlock>
+    <h3>{{post.title}}</h3>
+    <p>Autor: {{post.author}}</p><hr>
+    <p>
+      {{post.content}}
+    </p>
+  </ng-template>
+
+  <ng-template #elseBlock>
+    <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Brak wpisu</div>
+  </ng-template>
+</div>
